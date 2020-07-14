@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="micromanager2-backend-jvm">
+    <output-path>C:\Users\kyros\IdeaProjects\micromanager2-backend\build\libs</output-path>
+    <root id="archive" name="micromanager2-backend-jvm.jar">
+      <element id="module-output" name="micromanager2-backend.jvmMain" />
+    </root>
+  </artifact>
+</component>

@@ -1,0 +1,5 @@
+{
+  "name": "MicroManager2 Backend",
+  "description": "Micromanager2 Backend, deployed to Heroku.",
+  "image": "heroku/java"
+}

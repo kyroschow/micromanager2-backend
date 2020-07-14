@@ -6,6 +6,7 @@ buildscript {
 
 plugins {
     id 'org.jetbrains.kotlin.multiplatform' version '1.3.72'
+    id 'application'
 }
 repositories {
     jcenter()
@@ -65,11 +66,15 @@ jvmJar {
     from(new File(jsBrowserProductionWebpack.entry.name, jsBrowserProductionWebpack.outputPath))
 }
 
-task run(type: JavaExec, dependsOn: [jvmJar]) {
+task appRun(type: JavaExec, dependsOn: [jvmJar]) {
     group = "application"
     main = "project.ucsd.micromanager2.MainJvmKt"
     classpath(configurations.jvmRuntimeClasspath, jvmJar)
     args = []
+}
+
+run {
+    dependsOn(appRun)
 }
 
 // mainClass specified for heroku

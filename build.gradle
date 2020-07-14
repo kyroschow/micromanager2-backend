@@ -64,11 +64,11 @@ kotlin {
 jvmJar {
     dependsOn(jsBrowserProductionWebpack)
     from(new File(jsBrowserProductionWebpack.entry.name, jsBrowserProductionWebpack.outputPath))
-    manifest {
-        attributes(
-                'Main-Class': 'project.ucsd.micromanager2.MainJvmKt'
-        )
-    }
+//    manifest {
+//        attributes(
+//                'Main-Class': 'project.ucsd.micromanager2.MainJvmKt'
+//        )
+//    }
 }
 
 task appRun(type: JavaExec, dependsOn: [jvmJar]) {

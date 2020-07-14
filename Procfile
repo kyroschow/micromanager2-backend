@@ -1,1 +1,1 @@
-web: java -jar build/libs/micromanager2-backend-jvm.jar
+web: gradlew run

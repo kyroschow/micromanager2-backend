@@ -71,3 +71,6 @@ task run(type: JavaExec, dependsOn: [jvmJar]) {
     classpath(configurations.jvmRuntimeClasspath, jvmJar)
     args = []
 }
+
+// mainClass specified for heroku
+mainClassName = 'project.ucsd.micromanager2.MainJvmKt'

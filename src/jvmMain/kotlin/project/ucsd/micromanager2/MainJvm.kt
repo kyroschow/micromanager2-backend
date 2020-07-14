@@ -9,7 +9,8 @@ import io.ktor.server.netty.*
 import kotlinx.html.*
 
 fun main() {
-    embeddedServer(Netty, port = 8080, host = "127.0.0.1") {
+    val port = System.getenv("PORT")?.toInt() ?: 8080
+    embeddedServer(Netty, port = port, host = "127.0.0.1") {
         routing {
             get("/") {
                 call.respondHtml {

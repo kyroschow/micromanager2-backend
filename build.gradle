@@ -64,11 +64,11 @@ kotlin {
 jvmJar {
     dependsOn(jsBrowserProductionWebpack)
     from(new File(jsBrowserProductionWebpack.entry.name, jsBrowserProductionWebpack.outputPath))
-//    manifest {
-//        attributes(
-//                'Main-Class': 'project.ucsd.micromanager2.MainJvmKt'
-//        )
-//    }
+    manifest {
+        attributes(
+                'Main-Class': 'project.ucsd.micromanager2.MainJvmKt'
+        )
+    }
 }
 
 task appRun(type: JavaExec, dependsOn: [jvmJar]) {
@@ -82,5 +82,10 @@ run {
     dependsOn(appRun)
 }
 
-// mainClass specified for heroku
-// mainClassName = 'project.ucsd.micromanager2.MainJvmKt'
+// heroku stage task
+task stage {
+    dependsOn(installDist)
+}
+
+// mainClass specified for installDist
+mainClassName = 'project.ucsd.micromanager2.MainJvmKt'

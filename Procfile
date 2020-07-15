@@ -1,1 +1,1 @@
-web: ./gradlew run
+web: build/install/micromanager2-backend/bin/micromanager2-backend

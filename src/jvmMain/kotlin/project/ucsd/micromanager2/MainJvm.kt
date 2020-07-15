@@ -1,31 +1,27 @@
 package project.ucsd.micromanager2
 
-import io.ktor.application.*
-import io.ktor.html.*
-import io.ktor.http.content.*
-import io.ktor.routing.*
-import io.ktor.server.engine.*
-import io.ktor.server.netty.*
-import kotlinx.html.*
+import io.ktor.application.call
+import io.ktor.http.ContentType
+import io.ktor.http.content.resource
+import io.ktor.http.content.static
+import io.ktor.response.respondText
+import io.ktor.routing.get
+import io.ktor.routing.routing
+import io.ktor.server.engine.embeddedServer
+import io.ktor.server.netty.Netty
 
 fun main() {
     val port = System.getenv("PORT")?.toInt() ?: 8080
     embeddedServer(Netty, port = port, host = "127.0.0.1") {
         routing {
-            get("/") {
-                call.respondHtml {
-                    head {
-                        title("Hello from Ktor!")
-                    }
-                    body {
-                        +"${hello()} from Ktor."
-                        div {
-                            id = "js-response"
-                            +"Loading..."
-                        }
-                        script(src = "/static/micromanager2-backend.js") {}
-                    }
-                }
+            get("/{...}") {
+                call.respondText(
+                    this::class.java.classLoader.getResource("index.html")!!.readText(),
+                    ContentType.Text.Html
+                )
+            }
+            static("/") {
+                resource("index.html")
             }
             static("/static") {
                 resource("micromanager2-backend.js")

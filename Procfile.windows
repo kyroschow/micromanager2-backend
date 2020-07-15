@@ -1,0 +1,1 @@
+web: call build/install/micromanager2-backend/bin/micromanager2-backend.bat

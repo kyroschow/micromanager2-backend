@@ -14,7 +14,3 @@ fun main() {
         helloWorld("Hi!")
     })
 }
-
-fun yeetLmao() {
-    println("Hello, World!")
-}

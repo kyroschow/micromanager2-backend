@@ -86,6 +86,9 @@ kotlin {
                 // needed because of bug in ktor client
                 implementation(npm("bufferutil"))
                 implementation(npm("utf-8-validate"))
+
+                implementation(npm("@apollo/client"))
+                implementation(npm("graphql"))
             }
         }
         val jsTest by getting {

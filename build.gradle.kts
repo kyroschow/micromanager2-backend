@@ -16,7 +16,7 @@ group = "project.ucsd.micromanager2"
 version = "1.0-SNAPSHOT"
 
 application {
-    mainClassName = "project.ucsd.micromanager2.MainJvmKt"
+    mainClassName = "project.ucsd.micromanager2.MainKt"
 }
 
 repositories {
@@ -58,7 +58,6 @@ kotlin {
             dependencies {
                 implementation(kotlin("stdlib-jdk8"))
                 implementation("io.ktor:ktor-server-netty:$ktor_version")
-                implementation("io.ktor:ktor-html-builder:$ktor_version")
                 implementation("ch.qos.logback:logback-classic:$logback_version")
                 implementation("org.jetbrains.kotlinx:kotlinx-serialization-runtime:$serialization_version")
                 implementation("io.ktor:ktor-websockets:$ktor_version")
@@ -89,6 +88,17 @@ kotlin {
 
                 implementation(npm("@apollo/client"))
                 implementation(npm("graphql"))
+
+                // ktor client js json
+                implementation("io.ktor:ktor-client-json-js:$ktor_version")
+                implementation("io.ktor:ktor-client-serialization-js:$ktor_version")
+                implementation(npm("fs"))
+
+                // React, React DOM + Wrappers
+                implementation("org.jetbrains:kotlin-react:16.13.1-pre.105-kotlin-1.3.72")
+                implementation("org.jetbrains:kotlin-react-dom:16.13.1-pre.105-kotlin-1.3.72")
+                implementation(npm("react", "16.13.1"))
+                implementation(npm("react-dom", "16.13.1"))
             }
         }
         val jsTest by getting {

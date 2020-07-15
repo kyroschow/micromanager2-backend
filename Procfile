@@ -1,1 +1,1 @@
-web: build/install/micromanager2-backend/bin/micromanager2-backend
+web: ./build/install/micromanager2-backend/bin/micromanager2-backend

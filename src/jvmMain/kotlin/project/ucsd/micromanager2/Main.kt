@@ -12,7 +12,7 @@ import io.ktor.server.netty.Netty
 
 fun main() {
     val port = System.getenv("PORT")?.toInt() ?: 8080
-    embeddedServer(Netty, port = port, host = "127.0.0.1") {
+    embeddedServer(Netty, port = port) {
         routing {
             get("/{...}") {
                 call.respondText(

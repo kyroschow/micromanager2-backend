@@ -28,6 +28,7 @@ repositories {
 val ktor_version: String by project
 val logback_version: String by project
 val serialization_version: String by project
+val graphql_kotlin_version: String by project
 
 kotlin {
     jvm {
@@ -44,8 +45,6 @@ kotlin {
         val commonMain by getting {
             dependencies {
                 implementation(kotlin("stdlib-common"))
-                implementation("io.ktor:ktor-serialization:$ktor_version")
-                implementation("org.jetbrains.kotlinx:kotlinx-serialization-runtime-common:$serialization_version")
             }
         }
         val commonTest by getting {
@@ -59,11 +58,14 @@ kotlin {
                 implementation(kotlin("stdlib-jdk8"))
                 implementation("io.ktor:ktor-server-netty:$ktor_version")
                 implementation("ch.qos.logback:logback-classic:$logback_version")
-                implementation("org.jetbrains.kotlinx:kotlinx-serialization-runtime:$serialization_version")
                 implementation("io.ktor:ktor-websockets:$ktor_version")
+                implementation("io.ktor:ktor-gson:$ktor_version")
 
+                // kmongo
                 implementation("org.litote.kmongo:kmongo-coroutine-serialization:3.12.2")
 
+                // graphql-kotlin
+                implementation("com.expediagroup:graphql-kotlin-schema-generator:$graphql_kotlin_version")
             }
         }
         val jvmTest by getting {
@@ -75,11 +77,6 @@ kotlin {
         val jsMain by getting {
             dependencies {
                 implementation(kotlin("stdlib-js"))
-
-                implementation("org.jetbrains.kotlinx:kotlinx-serialization-runtime-js:$serialization_version")
-                // needed because of bug in serialization
-                implementation(npm("text-encoding"))
-                implementation(npm("abort-controller"))
 
                 implementation("io.ktor:ktor-client-js:$ktor_version")
                 // needed because of bug in ktor client

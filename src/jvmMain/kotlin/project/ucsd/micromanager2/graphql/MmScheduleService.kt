@@ -3,7 +3,16 @@ package project.ucsd.micromanager2.graphql
 import project.ucsd.micromanager2.model.MmSchedule
 
 class MmScheduleQuery {
-    fun scheduleById(id: String): MmSchedule {
+    fun scheduleById(
+        id: String
+    ): MmSchedule {
+        TODO()
+    }
+
+    fun schedules(
+        page: Int,
+        size: Int = 10
+    ): List<MmSchedule> {
         TODO()
     }
 
@@ -12,7 +21,12 @@ class MmScheduleQuery {
 }
 
 class MmScheduleMutation {
-    fun solve(schedule: MmSchedule): Int {
-        return 0
+    fun solve(
+        schedule: MmSchedule
+    ): MmSolverState {
+        return MmSolverState.PENDING
     }
+}
+enum class MmSolverState {
+    PENDING, STARTED, DONE
 }

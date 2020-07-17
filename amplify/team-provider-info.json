@@ -1,0 +1,15 @@
+{
+    "dev": {
+        "awscloudformation": {
+            "AuthRoleName": "amplify-micromanager2backend-dev-182241-authRole",
+            "UnauthRoleArn": "arn:aws:iam::055653408301:role/amplify-micromanager2backend-dev-182241-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::055653408301:role/amplify-micromanager2backend-dev-182241-authRole",
+            "Region": "us-west-2",
+            "DeploymentBucketName": "amplify-micromanager2backend-dev-182241-deployment",
+            "UnauthRoleName": "amplify-micromanager2backend-dev-182241-unauthRole",
+            "StackName": "amplify-micromanager2backend-dev-182241",
+            "StackId": "arn:aws:cloudformation:us-west-2:055653408301:stack/amplify-micromanager2backend-dev-182241/0341a130-c7cc-11ea-8e15-02f6ffa9fe66",
+            "AmplifyAppId": "d2lt1ur2b9mlvr"
+        }
+    }
+}

@@ -1,0 +1,12 @@
+{
+    "permissions": {
+        "storage": {
+            "mm2db": [
+                "create",
+                "read",
+                "update",
+                "delete"
+            ]
+        }
+    }
+}

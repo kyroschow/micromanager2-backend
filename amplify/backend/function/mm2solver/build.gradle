@@ -1,4 +1,7 @@
-apply plugin: 'java'
+plugins {
+    id 'java'
+    id "org.jetbrains.kotlin.jvm"
+}
 
 java {
     sourceCompatibility = JavaVersion.VERSION_11
@@ -10,16 +13,18 @@ repositories {
 }
 
 dependencies {
-    compile (
-        'com.amazonaws:aws-lambda-java-core:1.2.0',
-        'com.amazonaws:aws-lambda-java-events:2.2.7'
+    compile(
+            'com.amazonaws:aws-lambda-java-core:1.2.0',
+            'com.amazonaws:aws-lambda-java-events:2.2.7'
     )
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
 }
 
 jar.baseName = 'latest_build'
 
 task buildZip(type: Zip) {
     from compileJava
+    from compileKotlin
     from processResources
     into('lib') {
         from configurations.runtimeClasspath
@@ -28,3 +33,13 @@ task buildZip(type: Zip) {
 }
 
 build.dependsOn buildZip
+compileKotlin {
+    kotlinOptions {
+        jvmTarget = "11"
+    }
+}
+compileTestKotlin {
+    kotlinOptions {
+        jvmTarget = "11"
+    }
+}

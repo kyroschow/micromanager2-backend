@@ -5,7 +5,10 @@ import react.dom.render
 import kotlin.browser.*
 
 fun main() {
-    render(document.getElementById("root")) {
-        child(App)
-    }
+    document.getElementById("root")
+        ?.let { root ->
+            render(root) {
+                child(App)
+            }
+        }
 }

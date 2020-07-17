@@ -14,7 +14,7 @@ import io.ktor.routing.get
 import io.ktor.routing.post
 import io.ktor.routing.routing
 
-fun Application.installGraphQL() {
+fun Application.graphQLModule() {
     val config = SchemaGeneratorConfig(listOf("project.ucsd.micromanager2"))
     val queries = listOf(TopLevelObject(MmScheduleQuery()))
     val schema = toSchema(config, queries)

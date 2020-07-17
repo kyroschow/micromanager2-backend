@@ -6,6 +6,9 @@ class MmScheduleQuery {
     fun scheduleById(id: String): MmSchedule {
         TODO()
     }
+
+    // TODO: remove after testing
+    fun test(): MmSchedule = MmSchedule("12345", "Alan", "Schedule", listOf())
 }
 
 class MmScheduleMutation {

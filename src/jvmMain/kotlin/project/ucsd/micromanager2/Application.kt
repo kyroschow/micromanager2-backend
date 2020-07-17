@@ -11,10 +11,8 @@ import io.ktor.http.content.static
 import io.ktor.response.respondText
 import io.ktor.routing.get
 import io.ktor.routing.routing
-import project.ucsd.micromanager2.graphql.installGraphQL
 
 fun Application.mmModule() {
-    installGraphQL()
     install(ContentNegotiation) {
         gson()
     }

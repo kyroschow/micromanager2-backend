@@ -14,10 +14,11 @@ import io.ktor.routing.get
 import io.ktor.routing.post
 import io.ktor.routing.routing
 
-fun Application.graphQLModule() {
+fun Application.installGraphQL() {
     val config = SchemaGeneratorConfig(listOf("project.ucsd.micromanager2"))
-    val queries = listOf(TopLevelObject(MmScheduleQuery()))
-    val schema = toSchema(config, queries)
+    val queries = topLevelObjects(MmScheduleQuery())
+    val mutations = topLevelObjects(MmScheduleMutation())
+    val schema = toSchema(config, queries, mutations)
     val graphQL = GraphQL.newGraphQL(schema).build()
 
     suspend fun ApplicationCall.executeQuery() {
@@ -41,3 +42,6 @@ fun Application.graphQLModule() {
         }
     }
 }
+
+private fun topLevelObjects(vararg elements: Any): List<TopLevelObject> =
+    elements.map { TopLevelObject(it) }

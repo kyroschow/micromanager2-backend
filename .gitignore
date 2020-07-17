@@ -97,8 +97,7 @@ modules.xml
 # See https://youtrack.jetbrains.com/issue/JBR-2257
 .idea/$CACHE_FILE$
 
-# End of https://www.toptal.com/developers/gitignore/api/intellij
-
+# Build directories
 build/
 .gradle/
 .env
@@ -109,7 +108,6 @@ amplify/.config/local-*
 amplify/mock-data
 amplify/backend/amplify-meta.json
 amplify/backend/awscloudformation
-build/
 dist/
 node_modules/
 aws-exports.js

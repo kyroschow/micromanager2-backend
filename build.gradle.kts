@@ -66,6 +66,10 @@ kotlin {
 
                 // graphql-kotlin
                 implementation("com.expediagroup:graphql-kotlin-schema-generator:$graphql_kotlin_version")
+
+                // dynamodb
+                implementation("com.amazonaws:aws-java-sdk-dynamodb:1.9.0")
+
             }
         }
         val jvmTest by getting {

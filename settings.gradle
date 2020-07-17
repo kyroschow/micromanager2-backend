@@ -1,2 +1,3 @@
 rootProject.name = 'micromanager2-backend'
 
+include ':amplify:backend:function:mm2solver'

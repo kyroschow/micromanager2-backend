@@ -1,4 +1,8 @@
 package project.ucsd.micromanager2.dynamodb
 
-class Module {
+import io.ktor.application.Application
+
+
+fun Application.installDynamoDB() {
+
 }

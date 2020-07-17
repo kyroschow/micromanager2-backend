@@ -1,4 +1,4 @@
-package project.ucsd.micromanager2
+package project.ucsd.micromanager2.application
 
 import io.ktor.application.Application
 import io.ktor.application.call

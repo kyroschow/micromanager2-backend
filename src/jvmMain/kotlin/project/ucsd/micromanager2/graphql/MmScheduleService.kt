@@ -17,16 +17,24 @@ class MmScheduleQuery {
     }
 
     // TODO: remove after testing
-    fun test(): MmSchedule = MmSchedule("12345", "Alan", "Schedule", listOf())
+    fun test(): MmSchedule = MmSchedule("12345", "Alan", "Schedule", 0f, listOf())
 }
 
 class MmScheduleMutation {
     fun solve(
         schedule: MmSchedule
-    ): MmSolverState {
-        return MmSolverState.PENDING
+    ): MmSchedule {
+        // insert new schedule into dynamodb table
+        // get the id back
+        // start the aws lambda and send in the id of the schedule to aws lambda
+        // lambda processes the schedule
+        // lambda puts the processed schedule back into dynamodb
+        return schedule
     }
 }
-enum class MmSolverState {
-    PENDING, STARTED, DONE
+
+class MmScheduleSubscription {
+    fun scheduleStatus(
+        id: String
+    ): Unit = TODO()
 }

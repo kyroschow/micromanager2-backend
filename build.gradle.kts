@@ -70,7 +70,7 @@ kotlin {
                 implementation("com.expediagroup:graphql-kotlin-schema-generator:$graphql_kotlin_version")
 
                 // dynamodb
-                implementation("com.amazonaws:aws-java-sdk-dynamodb:1.9.0")
+                implementation("com.amazonaws:aws-java-sdk-dynamodb:1.11.822")
 
             }
         }

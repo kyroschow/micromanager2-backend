@@ -1,12 +1,20 @@
 package project.ucsd.micromanager2.graphql
 
+import io.ktor.application.Application
+import project.ucsd.micromanager2.dynamodb.ddb
 import project.ucsd.micromanager2.model.MmSchedule
 
-class MmScheduleQuery {
+class MmScheduleQuery(val application: Application) {
+    val TABLE_NAME = application.environment.config.property("aws.dynamodb.table_name").toString()
     fun scheduleById(
         id: String
     ): MmSchedule {
-        TODO()
+        val table = ddb!!.getTable(TABLE_NAME)
+        val item = table!!.getItem("id", id)
+        val schedule = MmSchedule(id = id, ownerId = item.getString("ownerId"),
+            name = item.getString("name"), progress = item.getFloat("progress"),
+            events = item.getList("events"))
+        return schedule
     }
 
     fun schedules(

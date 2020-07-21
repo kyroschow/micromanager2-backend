@@ -18,7 +18,7 @@ fun Application.installGraphQL() {
     val config = SchemaGeneratorConfig(listOf("project.ucsd.micromanager2"))
     val schema = toSchema(
         config = config,
-        queries = topLevelObjects(MmScheduleQuery()),
+        queries = topLevelObjects(MmScheduleQuery(this)),
         mutations = topLevelObjects(MmScheduleMutation())
     )
     val graphQL = GraphQL.newGraphQL(schema).build()

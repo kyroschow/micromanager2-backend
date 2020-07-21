@@ -37,7 +37,7 @@
 				"aws:asset:property": "Code"
 			},
 			"Properties": {
-				"Handler": "project.ucsd.micromanager2.LambdaRequestHandler::handleRequest",
+				"Handler": "project.ucsd.micromanager2.SolverRequestHandler::handleRequest",
 				"FunctionName": {
 					"Fn::If": [
 						"ShouldNotCreateEnvResources",
@@ -82,7 +82,7 @@
 				"Timeout": "25",
 				"Code": {
 					"S3Bucket": "amplify-micromanager2backend-dev-182241-deployment",
-					"S3Key": "amplify-builds/mm2solver-41616959426348637630-build.zip"
+					"S3Key": "amplify-builds/mm2solver-67356b596f6147695667-build.zip"
 				}
 			}
 		},

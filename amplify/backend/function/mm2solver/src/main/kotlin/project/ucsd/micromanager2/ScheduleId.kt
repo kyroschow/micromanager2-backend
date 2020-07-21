@@ -6,4 +6,6 @@
 Amplify Params - DO NOT EDIT */
 package project.ucsd.micromanager2
 
-data class ResponseClass(val greetings: String)
+data class ScheduleId(
+    var id: String = ""
+)

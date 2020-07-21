@@ -10,6 +10,7 @@ java {
 
 repositories {
     mavenCentral()
+    maven { setUrl("https://dl.bintray.com/kotlin/ktor") }
 }
 
 dependencies {
@@ -17,7 +18,15 @@ dependencies {
             'com.amazonaws:aws-lambda-java-core:1.2.0',
             'com.amazonaws:aws-lambda-java-events:2.2.7'
     )
+
+    // common
+    implementation project(':')
+
+    // kotlin
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
+
+    // scheduling
+    implementation("org.optaplanner:optaplanner-core:7.28.0.Final")
 }
 
 jar.baseName = 'latest_build'

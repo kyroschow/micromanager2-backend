@@ -9,12 +9,12 @@ package project.ucsd.micromanager2
 import com.amazonaws.services.lambda.runtime.Context
 import com.amazonaws.services.lambda.runtime.RequestHandler
 
-class LambdaRequestHandler : RequestHandler<RequestClass, ResponseClass> {
+@Suppress("unused")
+class SolverRequestHandler : RequestHandler<ScheduleId, ScheduleId> {
     override fun handleRequest(
-        request: RequestClass,
+        request: ScheduleId,
         context: Context
-    ): ResponseClass {
-        val greetingString = String.format("Hello %s %s!", request.firstName, request.lastName)
-        return ResponseClass(greetingString)
+    ): ScheduleId {
+        return request
     }
 }

@@ -1,5 +1,0 @@
-{
-    "tableName": "mm2db",
-    "partitionKeyName": "id",
-    "partitionKeyType": "S"
-}

@@ -31,19 +31,20 @@ class MmScheduleQuery(val application: Application) {
     ): List<MmSchedule> { //Figure out how to sort query results (global secondary index?)
         var numItems = 0
         val table = ddb!!.getTable(TABLE_NAME)
-        val spec = QuerySpec().withKeyConditionExpression("ownerId = :oid")
+        val spec = QuerySpec()
+            .withKeyConditionExpression("ownerId = :oid")
             .withValueMap(
                 ValueMap().withString(":oid", ownerId)
             )
+            .withMaxPageSize(size)
         val items = table.query(spec)
         val iterator = items.iterator()
         val itemList = mutableListOf<MmSchedule>()
-        while(iterator.hasNext() && numItems < size){
+        while(iterator.hasNext()){
             val item = iterator.next()
             itemList.add(MmSchedule(id = item.getString("id"), ownerId = ownerId,
                 name = item.getString("name"), progress = item.getFloat("progress"),
                 events = item.getList("events")))
-            numItems++
         }
         return itemList.toList()
     }

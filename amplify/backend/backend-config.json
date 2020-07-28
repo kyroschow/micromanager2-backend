@@ -1,6 +1,6 @@
 {
 	"storage": {
-		"mm2solverdb": {
+		"mm2db": {
 			"service": "DynamoDB",
 			"providerPlugin": "awscloudformation"
 		}
@@ -13,7 +13,7 @@
 			"dependsOn": [
 				{
 					"category": "storage",
-					"resourceName": "mm2solverdb",
+					"resourceName": "mm2db",
 					"attributes": [
 						"Name",
 						"Arn"

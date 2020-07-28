@@ -1,7 +1,0 @@
-{
-    "tableName": "mm2solverdb",
-    "partitionKeyName": "ownerId",
-    "partitionKeyType": "S",
-    "sortKeyName": "id",
-    "sortKeyType": "S"
-}

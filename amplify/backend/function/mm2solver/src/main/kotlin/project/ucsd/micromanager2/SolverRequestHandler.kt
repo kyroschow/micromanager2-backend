@@ -1,8 +1,8 @@
 /* Amplify Params - DO NOT EDIT
 	ENV
     REGION
-    STORAGE_MM2SOLVERDB_ARN
-    STORAGE_MM2SOLVERDB_NAME
+    STORAGE_MM2DB_ARN
+    STORAGE_MM2DB_NAME
 Amplify Params - DO NOT EDIT */
 package project.ucsd.micromanager2
 

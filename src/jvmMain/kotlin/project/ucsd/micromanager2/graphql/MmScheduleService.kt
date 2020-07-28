@@ -12,24 +12,22 @@ class MmScheduleQuery(val application: Application) {
 
     fun scheduleById(
         ownerId: String,
-        id: String
+        updateTime: String
     ): MmSchedule {
         val table = ddb!!.getTable(TABLE_NAME)
         val key = PrimaryKey()
         key.addComponent("ownerId", ownerId)
-        key.addComponent("id", id)
+        key.addComponent("updateTime", updateTime)
         val item = table!!.getItem(key)
-        return MmSchedule(id = id, ownerId = ownerId,
+        return MmSchedule(updateTime = updateTime, ownerId = ownerId,
             name = item.getString("name"), progress = item.getFloat("progress"),
             events = item.getList("events"))
     }
 
     fun schedules(
-        page: Int,
         size: Int = 10,
         ownerId: String
-    ): List<MmSchedule> { //Figure out how to sort query results (global secondary index?)
-        var numItems = 0
+    ): List<MmSchedule> {
         val table = ddb!!.getTable(TABLE_NAME)
         val spec = QuerySpec()
             .withKeyConditionExpression("ownerId = :oid")
@@ -42,7 +40,7 @@ class MmScheduleQuery(val application: Application) {
         val itemList = mutableListOf<MmSchedule>()
         while(iterator.hasNext()){
             val item = iterator.next()
-            itemList.add(MmSchedule(id = item.getString("id"), ownerId = ownerId,
+            itemList.add(MmSchedule(updateTime = item.getString("updateTime"), ownerId = ownerId,
                 name = item.getString("name"), progress = item.getFloat("progress"),
                 events = item.getList("events")))
         }

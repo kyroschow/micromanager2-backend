@@ -10,13 +10,13 @@
         "env": {
             "Type": "String"
         },
-        "storagemm2solverdbName": {
+        "storagemm2dbName": {
             "Type": "String",
-            "Default": "storagemm2solverdbName"
+            "Default": "storagemm2dbName"
         },
-        "storagemm2solverdbArn": {
+        "storagemm2dbArn": {
             "Type": "String",
-            "Default": "storagemm2solverdbArn"
+            "Default": "storagemm2dbArn"
         }
     },
     "Conditions": {
@@ -64,11 +64,11 @@
                         "REGION": {
                             "Ref": "AWS::Region"
                         },
-                        "STORAGE_MM2SOLVERDB_NAME": {
-                            "Ref": "storagemm2solverdbName"
+                        "STORAGE_MM2DB_NAME": {
+                            "Ref": "storagemm2dbName"
                         },
-                        "STORAGE_MM2SOLVERDB_ARN": {
-                            "Ref": "storagemm2solverdbArn"
+                        "STORAGE_MM2DB_ARN": {
+                            "Ref": "storagemm2dbArn"
                         }
                     }
                 },
@@ -201,14 +201,14 @@
                             ],
                             "Resource": [
                                 {
-                                    "Ref": "storagemm2solverdbArn"
+                                    "Ref": "storagemm2dbArn"
                                 },
                                 {
                                     "Fn::Join": [
                                         "/",
                                         [
                                             {
-                                                "Ref": "storagemm2solverdbArn"
+                                                "Ref": "storagemm2dbArn"
                                             },
                                             "index/*"
                                         ]

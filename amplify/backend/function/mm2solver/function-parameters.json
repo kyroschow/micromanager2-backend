@@ -1,7 +1,7 @@
 {
     "permissions": {
         "storage": {
-            "mm2solverdb": [
+            "mm2db": [
                 "create",
                 "read",
                 "update",

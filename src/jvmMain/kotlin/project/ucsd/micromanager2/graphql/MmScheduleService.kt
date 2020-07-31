@@ -2,7 +2,9 @@ package project.ucsd.micromanager2.graphql
 
 import com.amazonaws.services.dynamodbv2.document.PrimaryKey
 import com.amazonaws.services.dynamodbv2.document.spec.QuerySpec
+import com.amazonaws.services.dynamodbv2.document.spec.UpdateItemSpec
 import com.amazonaws.services.dynamodbv2.document.utils.ValueMap
+import com.amazonaws.services.dynamodbv2.model.ReturnValue
 import io.ktor.application.Application
 import project.ucsd.micromanager2.dynamodb.ddb
 import project.ucsd.micromanager2.model.MmSchedule
@@ -51,7 +53,9 @@ class MmScheduleQuery(val application: Application) {
     fun test(): MmSchedule = MmSchedule("12345", "Alan", "Schedule", 0f, listOf())
 }
 
-class MmScheduleMutation {
+class MmScheduleMutation(val application: Application) {
+    val TABLE_NAME = application.environment.config.property("aws.dynamodb.table_name").toString()
+
     fun solve(
         schedule: MmSchedule
     ): MmSchedule {
@@ -60,6 +64,18 @@ class MmScheduleMutation {
         // start the aws lambda and send in the id of the schedule to aws lambda
         // lambda processes the schedule
         // lambda puts the processed schedule back into dynamodb
+        val table = ddb!!.getTable(TABLE_NAME)
+        val origUT = schedule.updateTime
+        val spec = UpdateItemSpec()
+            .withPrimaryKey("ownerId", schedule.ownerId, "updateTime", origUT)
+            .withUpdateExpression("set updateTime=:u, events=:e")
+            .withValueMap(
+                ValueMap()
+                    .withString(":u", schedule.updateTime)
+                    .withList(":e", schedule.events)
+            )
+            .withReturnValues(ReturnValue.UPDATED_NEW)
+        val outcome = table.updateItem(spec)
         return schedule
     }
 }

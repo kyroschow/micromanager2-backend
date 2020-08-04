@@ -19,7 +19,7 @@ fun Application.installGraphQL() {
     val schema = toSchema(
         config = config,
         queries = topLevelObjects(MmScheduleQuery(this)),
-        mutations = topLevelObjects(MmScheduleMutation())
+        mutations = topLevelObjects(MmScheduleMutation(this))
     )
     val graphQL = GraphQL.newGraphQL(schema).build()
 

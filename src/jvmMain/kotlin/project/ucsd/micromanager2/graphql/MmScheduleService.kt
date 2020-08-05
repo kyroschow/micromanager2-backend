@@ -1,6 +1,8 @@
 package project.ucsd.micromanager2.graphql
 
+import com.amazonaws.services.dynamodbv2.document.Item
 import com.amazonaws.services.dynamodbv2.document.PrimaryKey
+import com.amazonaws.services.dynamodbv2.document.spec.DeleteItemSpec
 import com.amazonaws.services.dynamodbv2.document.spec.QuerySpec
 import com.amazonaws.services.dynamodbv2.document.spec.UpdateItemSpec
 import com.amazonaws.services.dynamodbv2.document.utils.ValueMap
@@ -55,6 +57,27 @@ class MmScheduleQuery(val application: Application) {
 
 class MmScheduleMutation(val application: Application) {
     val TABLE_NAME = application.environment.config.property("aws.dynamodb.table_name").toString()
+
+    fun create(
+        schedule: MmSchedule
+    ){
+        val table = ddb!!.getTable(TABLE_NAME)
+        table.putItem(Item()
+            .withPrimaryKey("ownerId", schedule.ownerId, "updateTime", schedule.updateTime)
+            .withString("name", schedule.name)
+            .withList("events", schedule.events)
+        )
+    }
+
+    fun delete(
+        ownerId: String,
+        updateTime: String
+    ){
+        val table = ddb!!.getTable(TABLE_NAME)
+        val spec = DeleteItemSpec()
+            .withPrimaryKey("ownerId", ownerId, "updateTime", updateTime)
+        table.deleteItem(spec)
+    }
 
     fun solve(
         schedule: MmSchedule

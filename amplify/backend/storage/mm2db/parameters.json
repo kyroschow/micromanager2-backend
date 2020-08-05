@@ -1,0 +1,7 @@
+{
+    "tableName": "mm2db",
+    "partitionKeyName": "ownerId",
+    "partitionKeyType": "S",
+    "sortKeyName": "updateTime",
+    "sortKeyType": "S"
+}
